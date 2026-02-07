@@ -17,26 +17,26 @@ const Navbar = () => {
           href="#projects"
           className="hover:text-mercury-accent transition-colors duration-300"
         >
-          Archive
+          Projects
         </a>
         <a
           href="#about"
           className="hover:text-mercury-accent transition-colors duration-300"
         >
-          Profile
+          About
         </a>
         <a
-          href="#skills"
+          href="#profile"
           className="hover:text-mercury-accent transition-colors duration-300"
         >
-          Stack
+          Profile
         </a>
-        <div className="h-3 w-[1px] bg-white/20" />
+        <div className="h-4 w-[1px] bg-white/10" />
         <a
           href="#contact"
-          className="text-white hover:text-mercury-accent transition-all duration-300 px-4 py-2 border border-white/10 hover:border-mercury-accent/50 rounded-sm"
+          className="text-white hover:text-mercury-accent transition-all duration-300 px-5 py-2 border border-white/5 hover:border-mercury-accent/30 rounded-full"
         >
-          Contact
+          Execute_Contact
         </a>
       </div>
     </nav>
