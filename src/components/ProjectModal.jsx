@@ -45,22 +45,22 @@ const ProjectModal = ({ project, onClose }) => {
   return (
     <AnimatePresence>
       <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 pointer-events-none overflow-hidden">
-        {/* Backdrop - Now with deeper blur for floating focus */}
+        {/* Backdrop - MUTED OBSIDIAN */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="absolute inset-0 bg-mercury-dark/60 backdrop-blur-xl pointer-events-auto"
+          className="absolute inset-0 bg-[#050507]/95 pointer-events-auto"
         />
 
-        {/* Floating Content Card */}
+        {/* Floating Content Card - REDUCED CONTRAST */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="relative w-full max-w-6xl max-h-[90vh] bg-mercury-card/80 border border-white/10 rounded-2xl flex flex-col overflow-hidden shadow-2xl pointer-events-auto backdrop-blur-2xl"
+          className="relative w-full max-w-6xl max-h-[90vh] bg-[#0a0a0c] border border-white/5 rounded-2xl flex flex-col overflow-hidden shadow-2xl pointer-events-auto"
         >
           {/* Internal Scrollable Container */}
           <div className="flex-1 overflow-y-auto custom-scrollbar p-8 md:p-16">
@@ -81,9 +81,9 @@ const ProjectModal = ({ project, onClose }) => {
                 <span className="text-mercury-accent font-mono text-[10px] uppercase tracking-[0.5em] block">
                   Project_Archive // 00{project.id}
                 </span>
-                <h2 className="text-5xl md:text-8xl font-black leading-none tracking-tighter text-white uppercase italic">
+                <h2 className="text-4xl md:text-7xl font-bold leading-none tracking-tight text-slate-200 uppercase">
                   {project.title.replace(".", "")}
-                  <span className="text-gradient">.</span>
+                  <span className="text-mercury-accent/60">.</span>
                 </h2>
               </motion.div>
 
@@ -91,7 +91,7 @@ const ProjectModal = ({ project, onClose }) => {
                 {/* Information Column */}
                 <div className="lg:col-span-12 space-y-12">
                   <motion.div variants={itemVariants} className="max-w-4xl">
-                    <p className="text-xl md:text-2xl text-mercury-muted font-light leading-relaxed">
+                    <p className="text-lg md:text-xl text-slate-400 font-light leading-relaxed">
                       {project.description}
                     </p>
                   </motion.div>
@@ -101,27 +101,27 @@ const ProjectModal = ({ project, onClose }) => {
                     variants={itemVariants}
                     className="grid grid-cols-1 md:grid-cols-2 gap-6"
                   >
-                    <div className="p-8 bg-white/5 border border-white/10 rounded-xl space-y-4 group hover:bg-white/10 transition-colors">
-                      <div className="flex items-center gap-3 text-mercury-accent">
+                    <div className="p-8 bg-white/[0.02] border border-white/5 rounded-xl space-y-4 group hover:bg-white/[0.04] transition-colors">
+                      <div className="flex items-center gap-3 text-mercury-accent/60">
                         <Cpu size={18} />
                         <span className="text-[10px] font-bold uppercase tracking-[0.4em]">
                           Tech Stack
                         </span>
                       </div>
-                      <p className="text-lg font-medium text-white italic">
+                      <p className="text-lg font-medium text-slate-300 italic">
                         {project.purpose ||
                           "WebGL / React / High-Fidelity Logic"}
                       </p>
                     </div>
 
-                    <div className="p-8 bg-white/5 border border-white/10 rounded-xl space-y-4 group hover:bg-white/10 transition-colors">
-                      <div className="flex items-center gap-3 text-mercury-accent">
+                    <div className="p-8 bg-white/[0.02] border border-white/5 rounded-xl space-y-4 group hover:bg-white/[0.04] transition-colors">
+                      <div className="flex items-center gap-3 text-mercury-accent/60">
                         <Layout size={18} />
                         <span className="text-[10px] font-bold uppercase tracking-[0.4em]">
                           Experience
                         </span>
                       </div>
-                      <p className="text-lg font-medium text-white italic">
+                      <p className="text-lg font-medium text-slate-300 italic">
                         {project.experience || "Senior Frontend Architecture"}
                       </p>
                     </div>
@@ -137,20 +137,20 @@ const ProjectModal = ({ project, onClose }) => {
                       className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 scale-105 group-hover:scale-100"
                       alt={project.title}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-mercury-dark/90 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#050507]/90 to-transparent" />
                     <div className="absolute bottom-10 left-10 right-10 flex justify-between items-end">
                       <div className="space-y-1">
-                        <span className="text-[8px] text-white/40 uppercase tracking-[0.4em]">
+                        <span className="text-[8px] text-slate-500 uppercase tracking-[0.4em]">
                           Asset_Node
                         </span>
-                        <p className="text-xs font-bold tracking-widest text-white/80">
+                        <p className="text-xs font-bold tracking-widest text-slate-400">
                           VISUAL_CORE_LOADED
                         </p>
                       </div>
-                      <div className="h-[1px] flex-1 bg-white/10 mx-6 mb-2" />
+                      <div className="h-[1px] flex-1 bg-white/5 mx-6 mb-2" />
                       <ArrowUpRight
                         size={20}
-                        className="text-white/40 group-hover:text-mercury-accent transition-colors underline"
+                        className="text-slate-500 group-hover:text-mercury-accent/60 transition-colors"
                       />
                     </div>
                   </motion.div>
@@ -158,17 +158,30 @@ const ProjectModal = ({ project, onClose }) => {
                   {/* Action Group */}
                   <motion.div
                     variants={itemVariants}
-                    className="flex flex-col md:flex-row gap-6"
+                    className="flex flex-col xl:flex-row gap-4"
                   >
-                    <button className="flex-1 bg-white text-mercury-dark py-6 px-10 font-black uppercase text-xs tracking-[0.4em] flex justify-between items-center group hover:bg-mercury-accent hover:text-white transition-all rounded-lg">
-                      Explore Live <ArrowUpRight size={16} />
-                    </button>
+                    <a
+                      href={project.live_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 bg-slate-200 text-mercury-dark py-5 px-8 font-black uppercase text-[10px] tracking-[0.3em] flex justify-between items-center group hover:bg-mercury-accent hover:text-white transition-all rounded-sm"
+                    >
+                      Live_Interface <ArrowUpRight size={14} />
+                    </a>
+                    <a
+                      href={project.github_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 border border-white/5 text-slate-400 py-5 px-8 font-black uppercase text-[10px] tracking-[0.3em] flex justify-between items-center hover:bg-white/[0.02] transition-all rounded-sm hover:border-white/10"
+                    >
+                      Repository_Source <ExternalLink size={14} />
+                    </a>
                     <a
                       href={project.zip_file_url}
                       download
-                      className="flex-1 border border-white/10 text-white py-6 px-10 font-black uppercase text-xs tracking-[0.4em] flex justify-between items-center hover:bg-white/5 transition-all rounded-lg hover:border-white/30"
+                      className="flex-1 border border-white/5 text-slate-400 py-5 px-8 font-black uppercase text-[10px] tracking-[0.3em] flex justify-between items-center hover:bg-white/[0.02] transition-all rounded-sm hover:border-white/10"
                     >
-                      Source Access <Download size={16} />
+                      Archive_Package <Download size={14} />
                     </a>
                   </motion.div>
                 </div>
