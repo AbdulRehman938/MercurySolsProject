@@ -1,99 +1,106 @@
 import { motion } from "framer-motion";
 
 const Hero = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 1.8 }, // Wait for loader exit
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 40, opacity: 0, filter: "blur(10px)" },
+    visible: {
+      y: 0,
+      opacity: 1,
+      filter: "blur(0px)",
+      transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
+
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center px-6 md:px-24 pt-20 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden"
     >
-      {/* Massive Background Typography */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] select-none">
-        <h1 className="text-[25vw] font-black tracking-tighter leading-none text-white">
-          REHMAN
-        </h1>
-      </div>
-
-      {/* Technical Metadata Corners */}
-      <div className="absolute top-32 left-12 hidden lg:block pointer-events-none">
-        <div className="text-[10px] space-y-2 font-mono text-mercury-muted opacity-60 uppercase tracking-widest">
-          <div className="flex items-center gap-2">
-            <span className="h-1 w-1 bg-mercury-accent" /> Node: Primary_Core
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="h-1 w-1 bg-white/20" /> Location: Dubai, UAE
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="h-1 w-1 bg-white/20" /> Lat: 25.2048° N
-          </div>
+      {/* Technical Metadata Rail */}
+      <div className="absolute left-10 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-32 opacity-20 pointer-events-none z-30">
+        <div className="font-mono text-[8px] space-y-3 uppercase tracking-[1em] vertical-text">
+          <div className="text-mercury-accent">System_Initialization</div>
+          <div className="text-white">// SYNC: STABLE</div>
         </div>
-      </div>
-
-      <div className="absolute bottom-32 right-12 hidden lg:block pointer-events-none">
-        <div className="text-[10px] space-y-2 font-mono text-mercury-muted opacity-60 uppercase tracking-widest text-right">
-          <div>Portfolio_v2.0</div>
-          <div className="text-white">Mercury Sols Studio</div>
-          <div>All Rights Reserved 2026</div>
+        <div className="font-mono text-[8px] space-y-3 uppercase tracking-[1em] vertical-text">
+          <div className="text-mercury-accent">Spatial_Node</div>
+          <div className="text-white">// POS: [67.0011, 24.8607]</div>
         </div>
       </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="max-w-5xl relative z-10"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-30 container mx-auto px-6 flex flex-col items-center pointer-events-auto"
       >
-        <div className="flex items-center gap-6 mb-10 overflow-hidden">
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: 64 }}
-            transition={{ delay: 0.5, duration: 1 }}
-            className="h-[1px] bg-mercury-accent"
-          />
-          <span className="text-mercury-accent font-bold tracking-[0.5em] uppercase text-[10px]">
-            Senior Frontend Architect
+        <motion.div
+          variants={itemVariants}
+          className="mb-14 flex flex-col items-center gap-4"
+        >
+          <span className="text-mercury-accent font-mono text-[10px] uppercase tracking-[1.5em] block">
+            Studio_Initialization // v4.2
           </span>
+          <div className="h-16 w-[1px] bg-gradient-to-b from-mercury-accent to-transparent" />
+        </motion.div>
+
+        <div className="relative">
+          <motion.h1
+            variants={itemVariants}
+            className="text-[10vw] md:text-[14vw] font-[900] leading-[0.7] tracking-tighter text-white uppercase italic select-none mix-blend-screen"
+          >
+            MERCURY SOLS<span className="text-mercury-accent">.</span>
+          </motion.h1>
+
+          <motion.div
+            variants={itemVariants}
+            className="absolute -top-12 -right-12 md:-top-20 md:-right-20 pointer-events-none"
+          >
+            <span className="text-[10px] md:text-[12px] font-mono text-white/30 whitespace-nowrap uppercase tracking-[1em] italic">
+              ENGINEERING // THE_VOID
+            </span>
+          </motion.div>
         </div>
 
-        <h1 className="text-[clamp(3.5rem,10vw,10rem)] leading-[0.85] font-black mb-12 tracking-tighter text-white">
-          DIGITAL <br />
-          <span className="text-gradient">FRONTIERS.</span>
-        </h1>
+        <motion.div
+          variants={itemVariants}
+          className="mt-20 text-center max-w-4xl"
+        >
+          <p className="text-xl md:text-3xl font-light text-slate-400 leading-relaxed tracking-wide italic">
+            Architecting{" "}
+            <span className="text-white font-medium">Digital Frontiers</span>{" "}
+            through high-performance engineering and{" "}
+            <span className="text-mercury-accent">Visual Systems</span>.
+          </p>
+        </motion.div>
 
-        <p className="text-mercury-muted text-lg md:text-2xl max-w-2xl mb-16 leading-relaxed font-light font-inter">
-          Abdul Rehman — Founder of Mercury Sols. Crafting high-fidelity
-          interactive experiences through advanced engineering and creative
-          visual systems.
-        </p>
+        <motion.div
+          variants={itemVariants}
+          className="mt-24 flex flex-col md:flex-row gap-12 items-center"
+        >
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            className="group relative px-16 py-7 bg-white text-mercury-dark font-black uppercase text-[10px] tracking-[0.6em] overflow-hidden transition-all duration-500 rounded-sm"
+          >
+            <span className="relative z-10">Initiate Protocol</span>
+            <div className="absolute inset-0 bg-mercury-accent translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[0.16, 1, 0.3, 1]" />
+          </motion.button>
 
-        <div className="flex flex-wrap gap-8">
-          <motion.a
-            whileHover={{ y: -5, gap: "20px" }}
-            href="#projects"
-            className="group flex items-center gap-4 bg-white text-mercury-dark px-12 py-6 rounded-sm font-black transition-all duration-500 uppercase tracking-widest text-xs"
-          >
-            Explore Work
-            <div className="w-8 h-[1px] bg-mercury-dark transition-all duration-500 group-hover:w-12" />
-          </motion.a>
-          <motion.a
-            whileHover={{
-              backgroundColor: "rgba(255,255,255,0.05)",
-              borderColor: "rgba(255,255,255,0.4)",
-            }}
-            href="#about"
-            className="border border-white/10 px-12 py-6 rounded-sm font-black transition-all duration-500 uppercase tracking-widest text-xs backdrop-blur-md text-white"
-          >
-            Experience
-          </motion.a>
-        </div>
+          <div className="flex items-center gap-6 text-white/30 text-[10px] font-mono tracking-[1em] uppercase">
+            <div className="w-20 h-[1px] bg-white/10" />
+            <span>Downlink_Scan</span>
+          </div>
+        </motion.div>
       </motion.div>
-
-      {/* Hero Scroll Meta */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-4">
-        <div className="w-[1px] h-20 bg-gradient-to-b from-mercury-accent to-transparent" />
-        <span className="text-[10px] uppercase tracking-[0.5em] text-mercury-muted rotate-90 origin-left mt-4">
-          Downlink
-        </span>
-      </div>
     </section>
   );
 };
