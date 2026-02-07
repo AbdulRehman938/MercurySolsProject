@@ -71,35 +71,41 @@ const Projects = ({ onSelectProject }) => {
   const placeholders = [
     {
       id: "p1",
-      title: "SYNTHESIS.",
-      purpose: "E-COM CORE",
+      title: "NEXUS VOID",
+      purpose: "WEBGL EXPERIMENT",
       description:
-        "A high-performance online store with seamless transitions and 3D product previews.",
+        "A generative 3D environment exploring the limits of browser-based vertex displacement and real-time fluid dynamics.",
       thumbnail:
         "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800",
-      experience: "Focusing on the buyer's journey through micro-interactions.",
+      experience: "WebGL / React-Three-Fiber / GLSL",
+      github_url: "https://github.com",
+      live_url: "https://mercurysols.com",
       images: [],
     },
     {
       id: "p2",
-      title: "OBSIDIAN.",
-      purpose: "SAAS ENGINE",
+      title: "STELLAR COMMERCE",
+      purpose: "E-COMMERCE ENGINE",
       description:
-        "Modern dashboard for data visualization and team collaboration.",
+        "A robust, high-performance shopping ecosystem with centralized state management and high-fidelity product visualization.",
       thumbnail:
         "https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&q=80&w=800",
-      experience: "Clean architecture with real-time data streaming.",
+      experience: "Next.js / Supabase / Tailwind CSS",
+      github_url: "https://github.com",
+      live_url: "https://mercurysols.com",
       images: [],
     },
     {
       id: "p3",
-      title: "MERCURY.",
-      purpose: "WEBGL LAB",
+      title: "VANTA SYSTEM",
+      purpose: "SAAS CORE",
       description:
-        "A creative playground exploring the limits of WebGL and Framer Motion.",
+        "Architecture for scalable business intelligence, featuring real-time data streaming and advanced analytics dashboards.",
       thumbnail:
         "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=800",
-      experience: "Pushing the boundaries of user engagement.",
+      experience: "React / Node.js / PostgreSQL",
+      github_url: "https://github.com",
+      live_url: "https://mercurysols.com",
       images: [],
     },
   ];
@@ -112,24 +118,24 @@ const Projects = ({ onSelectProject }) => {
         <div className="flex items-center gap-4">
           <div className="h-[2px] w-20 bg-mercury-accent" />
           <span className="text-mercury-accent font-bold tracking-[0.6em] uppercase text-xs">
-            Archive / 026
+            Studio_Archives // 026
           </span>
         </div>
-        <h2 className="text-6xl md:text-[140px] font-black leading-none tracking-tighter">
-          SELECTED <br />
-          <span className="text-gradient">WORKS.</span>
+        <h2 className="text-6xl md:text-[140px] font-black leading-none tracking-tighter uppercase italic">
+          Project <br />
+          <span className="text-slate-300 opacity-50">Showcase.</span>
         </h2>
       </div>
 
       {loading ? (
         <div className="flex justify-center py-40">
-          <div className="w-10 h-10 border-t-2 border-mercury-accent rounded-full animate-spin" />
+          <Loader2 className="w-10 h-10 text-mercury-accent animate-spin" />
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-24">
           {displayedProjects.map((project, index) => (
             <ProjectCard
-              key={project.id}
+              key={project.id || index}
               project={project}
               index={index}
               onSelect={onSelectProject}
